@@ -8,15 +8,15 @@ import { Parser } from './parser';
 import { RenderedConversation, Renderer } from './renderer';
 
 export class Controller {
-  // newConvo(conversation: RenderedConversation) {
-  //   const convos = this.readConversations();
-  //   const parser = new Parser();
-  //   const renderer = new Renderer();
-  //   const newConvo = parser.conversation(conversation);
-  //   convos.push(newConvo);
-  //   this.writeConversations(convos);
-  //   return renderer.conversation(newConvo);
-  // }
+  newConvo(conversation: RenderedConversation) {
+    const convos = this.readConversations();
+    const parser = new Parser();
+    const renderer = new Renderer();
+    const newConvo = parser.conversation(conversation);
+    convos.push(newConvo);
+    this.writeConversations(convos);
+    return renderer.conversation(newConvo);
+  }
 
   async prompt(convoId: number, prompt: string) {
     const convos = this.readConversations();
@@ -39,22 +39,22 @@ export class Controller {
     this.writeConversations(convos);
   }
 
-  // configure(temperature: number, token: number, prompt: string) {
-  //   const parser = new Parser();
-  //   const renderer = new Renderer();
-  //   const ai = parser.ai({
-  //     race: 'AI',
-  //     temperature: temperature,
-  //     token: token,
-  //     prompt: prompt,
-  //   });
-  //   this.writeAI(ai);
-  //   return {
-  //     temperature: renderer.temperature(ai.temperature),
-  //     token: renderer.token(ai.token),
-  //     prompt: renderer.prompt(ai.prompt),
-  //   };
-  // }
+  configure(temperature: number, token: number, prompt: string) {
+    const parser = new Parser();
+    const renderer = new Renderer();
+    const ai = parser.ai({
+      race: 'AI',
+      temperature: temperature,
+      token: token,
+      prompt: prompt,
+    });
+    this.writeAI(ai);
+    return {
+      temperature: renderer.temperature(ai.temperature),
+      token: renderer.token(ai.token),
+      prompt: renderer.prompt(ai.prompt),
+    };
+  }
 
   convos() {
     const convos = this.readConversations();
