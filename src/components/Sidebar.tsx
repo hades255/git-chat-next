@@ -50,8 +50,8 @@ const Sidebar = () => {
               <span className="ml-1">New Chat</span>
             </Button>
             <div className='max-h-[60vh] overflow-y-hidden'>
-              {aiContext.conversations.map((convo, index) => (
-                <Link key={index} to={`/chat/${index}`}>
+              {aiContext.conversations.slice().reverse().map((convo, index) => (
+                <Link key={index} to={`/chat/${aiContext.conversations.length - 1 - index}`}>
                   <ChatItem convo={convo} />
                 </Link>
               ))}
