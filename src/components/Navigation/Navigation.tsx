@@ -44,18 +44,14 @@ export const Navigation = () => {
         </div>
       </NavLink>
       <div className="grow"></div>
-      {chatTitle && (
-        <motion.h4
-          animate={{ opacity: 1 }}
-          initial={{ opacity: 0 }}
-          transition={{ duration: 1 }}
-          className={styles['chat-title']}
-        >
-          {chatTitle}
-        </motion.h4>
-      )}
+      <div className="flex justify-space-between items-center gap-80">
+        <h2>Buy Crypto</h2>
+        <input type="text" placeholder="Search" className={styles.searchInput} />
+        <div className={styles.currency}>USD</div>
+        <div className={styles.language}>ENG</div>
+      </div>
       <div className="grow"></div>
-      <ConnectWalletButton />
+      {/* <ConnectWalletButton /> */}
       <Settings
         open={settingsOpen}
         clickHandler={() => setSettingsOpen((isOpen) => !isOpen)}

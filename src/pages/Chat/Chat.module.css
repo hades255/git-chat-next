@@ -1,23 +1,92 @@
-.secondary-section {
-    @apply my-auto;
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 }
 
-.secondary-heading {
-    @apply text-2xl tracking-wide md:text-3xl text-center;
+.row {
+    display: flex;
+    flex: 1;
 }
 
-.prompts-container {
-    @apply flex flex-col items-center md:items-stretch md:flex-row;
+.col-lg-2 {
+    width: 20%;
+    background-color: #f7f7f7;
+    padding: 20px;
 }
 
-.prompt-text {
-    @apply text-sm;
+.col-lg-10 {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
 }
 
-.chat-container {
-    @apply pb-40;
+
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
 }
 
-.error-container {
-    @apply bg-red-200 text-red-400 p-4 rounded-md;
+.searchInput {
+    flex-grow: 1;
+    margin: 0 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.currency,
+.language {
+    margin: 0 10px;
+}
+
+.mainContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.chatContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.secondarySection {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.secondaryHeading {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.promptsContainer {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.promptText {
+    font-size: 16px;
+}
+
+.chatArea {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.errorContainer {
+    color: red;
+    margin-top: 10px;
 }

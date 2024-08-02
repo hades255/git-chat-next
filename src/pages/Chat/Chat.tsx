@@ -7,6 +7,7 @@ import { Card } from '../../components/Card/Card';
 import styles from './Chat.module.css';
 import { RenderedConversation } from '../../chat-gpt/renderer';
 import { motion } from 'framer-motion';
+import Sidebar from "../../components/Sidebar";
 
 const promptTemplates = [
   'Explain quantum computing in simple terms',
@@ -57,57 +58,69 @@ export const ChatPage = () => {
   };
 
   return (
-    <>
-      {conversation && conversation.speeches.length === 0 && (
-        <div className={styles['secondary-section']}>
-          <h2 className={styles['secondary-heading']}>Need an icebreaker?</h2>
-          <motion.div
-            className={styles['prompts-container']}
-            animate={{ opacity: 1 }}
-            initial={{ opacity: 0 }}
-            transition={{ duration: 1 }}
-          >
-            {promptTemplates.map((prompt, id) => (
-              <button key={id} onClick={() => onTemplateClicked(prompt)}>
-                <Card direction="row">
-                  <p className={styles['prompt-text']}>{prompt}</p>
-                </Card>
-              </button>
-            ))}
-          </motion.div>
+    <div className="container w-full">
+      <div className="row">
+        <div className="col-lg-2">
+          <Sidebar />
         </div>
-      )}
-      {conversation && conversation.speeches.length > 0 && (
-        <div className={styles['chat-container']}>
-          {conversation.description && (
-            <motion.p
-              className="mb-4"
-              animate={{ opacity: 1, x: 0 }}
-              initial={{ opacity: 0, x: -60 }}
-              transition={{ duration: 0.5 }}
-            >
-              {conversation.description}
-            </motion.p>
-          )}
-          {conversation.speeches.map((speech, id) => {
-            const speaker = speech.speaker === 'HUMAN' ? 'user' : 'ai';
-            let animate = false;
-            if (id === conversation.speeches.length - 1) {
-              animate = true;
-            }
-            return <SpeechBubble key={id} speaker={speaker} text={speech.content} animate={animate} />;
-          })}
-          {loading && <SpeechBubble speaker="ai" text="" loading={true} animate={true} delay={0.5} />}
-          {error && <div className={styles['error-container']}>{error}</div>}
-          <div ref={chatEndRef} />
+        <div className="col-lg-10">
+          <div className={styles.mainContent}>
+
+            <div className={styles.chatContainer}>
+              {conversation && conversation.speeches.length === 0 && (
+                <div className={styles.secondarySection}>
+                  <h2 className={styles.secondaryHeading}>Need an icebreaker?</h2>
+                  <motion.div
+                    className={styles.promptsContainer}
+                    animate={{ opacity: 1 }}
+                    initial={{ opacity: 0 }}
+                    transition={{ duration: 1 }}
+                  >
+                    {promptTemplates.map((prompt, id) => (
+                      <button key={id} onClick={() => onTemplateClicked(prompt)}>
+                        <Card direction="row">
+                          <p className={styles.promptText}>{prompt}</p>
+                        </Card>
+                      </button>
+                    ))}
+                  </motion.div>
+                </div>
+              )}
+              {conversation && conversation.speeches.length > 0 && (
+                <div className={styles.chatArea}>
+                  {conversation.description && (
+                    <motion.p
+                      className="mb-4"
+                      animate={{ opacity: 1, x: 0 }}
+                      initial={{ opacity: 0, x: -60 }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      {conversation.description}
+                    </motion.p>
+                  )}
+                  {conversation.speeches.map((speech, id) => {
+                    const speaker = speech.speaker === 'HUMAN' ? 'user' : 'ai';
+                    let animate = false;
+                    if (id === conversation.speeches.length - 1) {
+                      animate = true;
+                    }
+                    return <SpeechBubble key={id} speaker={speaker} text={speech.content} animate={animate} />;
+                  })}
+                  {loading && <SpeechBubble speaker="ai" text="" loading={true} animate={true} delay={0.5} />}
+                  {error && <div className={styles.errorContainer}>{error}</div>}
+                  <div ref={chatEndRef} />
+                </div>
+              )}
+              <ChatInput
+                input={input}
+                inputChangeHandler={onInputChange}
+                inputSubmitHandler={onInputSubmit}
+                submitting={loading}
+              />
+            </div>
+          </div>
         </div>
-      )}
-      <ChatInput
-        input={input}
-        inputChangeHandler={onInputChange}
-        inputSubmitHandler={onInputSubmit}
-        submitting={loading}
-      />
-    </>
+      </div>
+    </div>
   );
 };
