@@ -7,7 +7,7 @@ import { Card } from '../../components/Card/Card';
 import styles from './Chat.module.css';
 import { RenderedConversation } from '../../chat-gpt/renderer';
 import { motion } from 'framer-motion';
-import Sidebar from "../../components/Sidebar";
+import Sidebar from '../../components/Sidebar';
 
 const promptTemplates = [
   'Explain quantum computing in simple terms',
@@ -60,12 +60,21 @@ export const ChatPage = () => {
   return (
     <div className="container w-full">
       <div className="row">
-        <div className="col-lg-2">
-          <Sidebar />
-        </div>
-        <div className="col-lg-10">
+        <div className="">
           <div className={styles.mainContent}>
-
+            {conversation && conversation.speeches.length === 0 && (
+              <div className="flex flex-col">
+                <div className="my-8 flex justify-center">
+                  <div className="text-4xl">Logo</div>
+                </div>
+                <div className="my-4 flex justify-center">
+                  <div className="text-2xl">Hi Jue</div>
+                </div>
+                <div className="my-4 flex justify-center">
+                  <div className="text-2xl">How can I help you?</div>
+                </div>
+              </div>
+            )}
             <div className={styles.chatContainer}>
               {conversation && conversation.speeches.length === 0 && (
                 <div className={styles.secondarySection}>

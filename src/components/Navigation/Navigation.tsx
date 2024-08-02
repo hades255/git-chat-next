@@ -43,14 +43,20 @@ export const Navigation = () => {
           <span className={styles['title']}>chat-gpt</span>
         </div>
       </NavLink>
-      <div className="grow"></div>
-      <div className="flex justify-space-between items-center gap-80">
-        <h2>Buy Crypto</h2>
-        <input type="text" placeholder="Search" className={styles.searchInput} />
-        <div className={styles.currency}>USD</div>
-        <div className={styles.language}>ENG</div>
+      <div className="mx-8 grow">
+        <div className="relative w-full h-8 overflow-hidden whitespace-nowrap py-2">
+          <div className="absolute animate-marquee space-x-4 flex">
+            <span className="mx-2 text-xl font-bold text-white">
+              Cryptos: 2.4M+ Exchanges: 796 Market Cap: $2.38T 24 Vol: $62.47 Dominance: BTC: 55.0% ETH 16.7%
+            </span>
+          </div>
+          <div className="absolute animate-marquee space-x-4 flex">
+            <span className="mx-2 text-xl font-bold text-white">
+              Cryptos: 2.4M+ Exchanges: 796 Market Cap: $2.38T 24 Vol: $62.47 Dominance: BTC: 55.0% ETH 16.7%
+            </span>
+          </div>
+        </div>
       </div>
-      <div className="grow"></div>
       {/* <ConnectWalletButton /> */}
       <Settings
         open={settingsOpen}
