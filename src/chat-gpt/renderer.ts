@@ -9,6 +9,7 @@ import { Speech } from './utils';
 export type RenderedSpeech = {
   speaker: string;
   content: string;
+  action: string;
 };
 
 export type RenderedConversation = {
@@ -39,6 +40,7 @@ export class Renderer {
   speech(speech: Speech) {
     return {
       speaker: this.speaker(speech.speaker).race.valueOf(),
+      action: speech.action,
       content: speech.content,
     };
   }

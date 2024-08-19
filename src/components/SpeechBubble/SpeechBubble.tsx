@@ -2,13 +2,17 @@ import styles from './SpeechBubble.module.css';
 import Loader from '../../assets/loading.gif';
 import { motion } from 'framer-motion';
 
-export const SpeechBubble: React.FC<{
+interface BubbleProps {
   speaker: string;
   text: string;
+  action: string;
   loading?: boolean;
   animate: boolean;
   delay?: number;
-}> = (props) => {
+  onConfirm: (confirm: boolean) => void;
+}
+
+export const SpeechBubble: React.FC<BubbleProps> = (props) => {
   let speechBubbleClass: string;
   let containerClass: string;
 
@@ -22,7 +26,18 @@ export const SpeechBubble: React.FC<{
 
   const content = props.loading ? <img src={Loader} width={40} alt="Loading" /> : <p>{props.text}</p>;
 
-  if (props.animate) {
+  if (props.text == 'confirm') {
+    return (
+      <div className={styles[containerClass]}>
+        <div className="grow"></div>
+        <div className={styles[speechBubbleClass]}>
+          <p>Please confirm actions</p><br></br>
+          <button className={styles['confirm_yes']} onClick={() => props.onConfirm(true)}>Yes</button>
+          <button className={styles['confirm_no']} onClick={() => props.onConfirm(false)}>No</button>
+        </div>
+      </div>
+    );
+  } else if (props.animate) {
     return (
       <motion.div
         className={styles[containerClass]}

@@ -13,3 +13,11 @@
 .user {
     @apply bg-teal-500 inline-block w-fit max-w-full p-2 rounded-tl-lg rounded-tr-lg rounded-bl-lg my-2;
 }
+
+.confirm_yes {
+    @apply py-2.5 px-6 rounded-lg text-sm font-medium text-white bg-teal-600
+}
+
+.confirm_no {
+    @apply py-2.5 px-6 rounded-lg text-sm font-medium bg-teal-200 text-teal-800
+}

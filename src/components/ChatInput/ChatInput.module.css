@@ -1,11 +1,15 @@
 .input {
-    @apply bg-gray-600 appearance-none border-[1px] border-transparent rounded w-[90%] lg:w-full py-2 px-4 leading-tight focus:outline-none focus:border-teal-500 mx-auto max-h-40 my-2;
+    @apply text-black appearance-none border-[1px] border-transparent rounded w-[90%] py-2 px-4 leading-tight focus:outline-none focus:border-teal-500 mx-auto my-2;
+    height: 50px;
+    /* Fixed height */
 }
 
 .disabled-input {
-    @apply bg-gray-700 appearance-none border-[1px] border-transparent rounded w-[90%] lg:w-full py-2 px-4 leading-tight focus:outline-none focus:border-teal-500 mx-auto max-h-40 my-2;
+    @apply appearance-none border-[1px] border-transparent rounded w-[90%] py-2 px-4 leading-tight focus:outline-none focus:border-teal-500 mx-auto my-2;
+    height: 50px;
+    /* Fixed height */
 }
 
 .container {
-    @apply px-5 py-2 fixed z-20 flex items-center justify-center bottom-0 right-[2px] w-full bg-gray-900;
+    @apply bg-white px-5 py-2 gap-3 z-20 flex items-center justify-center md:left-72 border-[6px] border-[#2D2D2D] rounded-xl fixed right-[15%] top-[80vh] ml-[20%] mb-1;
 }

@@ -1,9 +1,9 @@
 .card {
-    @apply transition-all ease-in-out duration-300 bg-gray-700 p-2 my-2 rounded-md hover:bg-gray-600;
+    @apply transition-all ease-in-out duration-300 p-2 my-2 rounded-md hover:bg-yawn-dark-purple;
 }
 
 .title {
-    @apply font-medium tracking-wide;
+    @apply font-medium tracking-wide font-londrina;
 }
 
 .description {

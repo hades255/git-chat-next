@@ -9,6 +9,7 @@ export const AIContext = React.createContext<{
   prompt: string;
   newConvo: () => void;
   sendPrompt: (id: number, prompt: string) => Promise<void>;
+  addAIPrompt: (id: number, prompt: string) => void;
   configure: (temp: number, token: number, prompt: string) => void;
 }>({
   conversations: [],
@@ -17,6 +18,7 @@ export const AIContext = React.createContext<{
   prompt: '',
   newConvo: () => {},
   sendPrompt: (id: number, prompt: string) => new Promise((resolve, reject) => {}),
+  addAIPrompt: (id: number, prompt: string) => {},
   configure: (temp: number, token: number, prompt: string) => {},
 });
 
@@ -42,11 +44,21 @@ export const AIContextProvider: React.FC<React.PropsWithChildren> = (props) => {
     setConversations((prevConvos) => [...prevConvos, addedConvo]);
   };
 
+  const addAIPrompt = (id: number, prompt: string) => {
+    const chatGptApi = new Controller();
+    setConversations((prevConvos) => {
+      const newConvos = [...prevConvos];
+      newConvos[id].speeches.push({ speaker: 'AI', content: prompt, action: 'AI' });
+      return newConvos;
+    });
+    chatGptApi.AIprompt(id, prompt);
+  }
+
   const sendPrompt = async (id: number, prompt: string) => {
     const chatGptApi = new Controller();
     setConversations((prevConvos) => {
       const newConvos = [...prevConvos];
-      newConvos[id].speeches.push({ speaker: 'HUMAN', content: prompt });
+      newConvos[id].speeches.push({ speaker: 'HUMAN', content: prompt, action: 'human' });
       return newConvos;
     });
     await chatGptApi.prompt(id, prompt);
@@ -86,6 +98,7 @@ export const AIContextProvider: React.FC<React.PropsWithChildren> = (props) => {
         prompt: prompt,
         newConvo: newConvo,
         sendPrompt: sendPrompt,
+        addAIPrompt: addAIPrompt,
         configure: configure,
       }}
     >

@@ -1,4 +1,4 @@
-import { Speech, Summary } from '../utils';
+import { Speech, Summary, Action } from '../utils';
 
 export class Conversation {
   private _title: string;

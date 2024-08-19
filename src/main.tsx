@@ -1,11 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
 
-const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
-root.render(
+import Wagmi from './Wagmi';
+
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
+
+import App from './App.jsx';
+import './index.css';
+import { WagmiContextProvider } from './context/WagmiContext';
+
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <App />
+    <Wagmi>
+      <WagmiContextProvider>
+        <App />
+      </WagmiContextProvider>
+      <ToastContainer
+        hideProgressBar
+        pauseOnHover={false}
+        position="top-right"
+        theme="dark"
+      />
+    </Wagmi>
   </React.StrictMode>
 );

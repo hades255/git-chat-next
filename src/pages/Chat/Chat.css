@@ -1,0 +1,10 @@
+/* Add this CSS to your global stylesheet or as inline style */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;     /* Firefox */
+    overflow-y: scroll; /* Ensures content is scrollable */
+}

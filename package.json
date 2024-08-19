@@ -17,17 +17,23 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
+    "@headlessui/react": "^2.1.2",
     "@web3modal/ethereum": "^2.7.1",
     "@web3modal/react": "^2.7.1",
+    "ethers": "^6.13.2",
     "framer-motion": "^10.10.0",
+    "iconsax-react": "^0.0.8",
     "openai": "^3.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-query": "^3.39.3",
     "react-router-dom": "^6.9.0",
+    "react-toastify": "^10.0.5",
     "use-debounce": "^10.0.1",
     "viem": "^0.3.50",
-    "wagmi": "^1.1.0"
+    "wagmi": "^1.1.0",
+    "web3": "^4.11.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.27",

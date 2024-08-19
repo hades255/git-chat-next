@@ -4,13 +4,23 @@ module.exports = {
   theme: {
     extend: {
       animation: {
-        marquee: 'marquee 15s linear infinite',
+        slideDown: 'slideDown 8s ease-in-out infinite',
       },
       keyframes: {
-        marquee: {
-          '0%': { transform: 'translateX(100%)' },
-          '100%': { transform: 'translateX(-100%)' },
+        slideDown: {
+          '0%, 100%': { transform: 'translateY(-100%)', opacity: '0' },
+          '10%, 90%': { transform: 'translateY(0)', opacity: '1' },
         },
+      },
+      fontFamily: {
+        'londrina': ['"Londrina Solid"', 'cursive'], // Add Londrina Solid
+      },
+      colors: {
+        'dark-grey': '#333333', // or any hex value for dark grey,
+        'yawn-primary': '#00C3FF',
+        'yawn-purple': '#9747FF',
+        'yawn-lemon': '#FFAE00',
+        'yawn-dark-purple': '#400072',
       },
     },
   },

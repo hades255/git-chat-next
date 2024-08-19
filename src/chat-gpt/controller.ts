@@ -23,12 +23,25 @@ export class Controller {
     const curConvo = convos[convoId];
     const human = new Human();
     const ai = this.readAI();
-    const speech = human.speak(prompt);
+    const speech = human.speak(prompt, 'human');
     human.add(speech, curConvo);
     const response = await ai.think(curConvo);
     ai.add(response, curConvo);
     this.writeConversations(convos);
     return response;
+  }
+
+  async AIprompt(convoId: number, prompt: string) {
+    const convos = this.readConversations();
+    const curConvo = convos[convoId];
+    const human = new Human();
+    const ai = this.readAI();
+    const speech = ai.speak(prompt, 'ai');
+    ai.add(speech, curConvo);
+    // const response = await ai.think(curConvo);
+    // ai.add(response, curConvo);
+    this.writeConversations(convos);
+    // return response;
   }
 
   async summarize(convoId: number) {

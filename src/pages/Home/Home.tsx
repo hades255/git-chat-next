@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { useContext } from 'react';
 import { AIContext } from '../../context/ai-context';
 
+
 export const HomePage = () => {
   const navigate = useNavigate();
   const aiContext = useContext(AIContext);
